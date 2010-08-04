@@ -95,6 +95,7 @@
         var onsubmit = settings.onsubmit || function() { };
         var onreset  = settings.onreset  || function() { };
         var onerror  = settings.onerror  || reset;
+        var onloaded = settings.onloaded || function() { };
           
         /* Show tooltip. */
         if (settings.tooltip) {
@@ -370,6 +371,8 @@
                     
                     return false;
                 });
+
+                onloaded.apply(form, [settings, self]);
             });
             
             /* Privileged methods */
